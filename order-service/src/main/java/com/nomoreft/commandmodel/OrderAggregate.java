@@ -1,0 +1,43 @@
+package com.nomoreft.commandmodel;
+
+import com.nomoreft.axonmsa.commands.order.CreateOrderCommand;
+import com.nomoreft.axonmsa.commands.ship.ShipOrderCommand;
+import com.nomoreft.axonmsa.events.order.OrderCreatedEvent;
+import com.nomoreft.axonmsa.events.ship.OrderShippedEvent;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
+import org.axonframework.modelling.command.AggregateIdentifier;
+import org.axonframework.spring.stereotype.Aggregate;
+
+import static org.axonframework.modelling.command.AggregateLifecycle.apply;
+
+@Aggregate
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class OrderAggregate {
+
+    @AggregateIdentifier
+    private String orderId;
+    private boolean orderConfirmed;
+
+    @CommandHandler
+    public OrderAggregate(CreateOrderCommand command) {
+        apply(new OrderCreatedEvent(command.orderId(), command.productId()));
+    }
+
+    @EventSourcingHandler
+    public void on(OrderCreatedEvent event) {
+        this.orderId = event.orderId();
+        this.orderConfirmed = false;
+    }
+
+    @CommandHandler
+    public void handle(ShipOrderCommand command) {
+        if (orderConfirmed) {
+            return;
+        }
+
+        apply(new OrderShippedEvent(command.orderId()));
+    }
+}
