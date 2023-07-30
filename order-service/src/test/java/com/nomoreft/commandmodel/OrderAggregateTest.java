@@ -1,17 +1,15 @@
 package com.nomoreft.commandmodel;
 
-import com.nomoreft.axonmsa.commands.order.CreateOrderCommand;
-import com.nomoreft.axonmsa.commands.ship.ShipOrderCommand;
-import com.nomoreft.axonmsa.events.order.OrderCreatedEvent;
-import com.nomoreft.axonmsa.events.ship.OrderShippedEvent;
+import com.nomoreft.axonmsa.commands.CreateOrderCommand;
+import com.nomoreft.axonmsa.commands.ShipOrderCommand;
+import com.nomoreft.axonmsa.events.OrderCreatedEvent;
+import com.nomoreft.axonmsa.events.OrderShippedEvent;
 import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.axonframework.test.aggregate.FixtureConfiguration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class OrderAggregateTest {
 
@@ -29,7 +27,7 @@ class OrderAggregateTest {
         String orderId = UUID.randomUUID().toString();
         String productId = "Deluxe Chair";
         fixture.givenNoPriorActivity()
-                .when(new CreateOrderCommand(orderId, productId))
+                .when(new CreateOrderCommand(orderId))
                 .expectEvents(new OrderCreatedEvent(orderId, productId));
     }
 

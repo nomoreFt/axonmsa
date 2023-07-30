@@ -1,4 +1,4 @@
-package com.nomoreft.axonmsa.events.ship;
+package com.nomoreft.axonmsa.events;
 
 public record OrderShippedEvent(String orderId) {
 }

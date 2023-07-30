@@ -69,6 +69,8 @@ project(':order-service')
         {
     dependencies {
         api project(':core-api')
+        //webflux
+        implementation 'org.springframework.boot:spring-boot-starter-webflux'
         //axontest
         testImplementation 'org.axonframework:axon-test'
     }

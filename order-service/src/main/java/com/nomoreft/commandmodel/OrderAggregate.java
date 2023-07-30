@@ -1,9 +1,9 @@
 package com.nomoreft.commandmodel;
 
-import com.nomoreft.axonmsa.commands.order.CreateOrderCommand;
-import com.nomoreft.axonmsa.commands.ship.ShipOrderCommand;
-import com.nomoreft.axonmsa.events.order.OrderCreatedEvent;
-import com.nomoreft.axonmsa.events.ship.OrderShippedEvent;
+import com.nomoreft.axonmsa.commands.CreateOrderCommand;
+import com.nomoreft.axonmsa.commands.ShipOrderCommand;
+import com.nomoreft.axonmsa.events.OrderCreatedEvent;
+import com.nomoreft.axonmsa.events.OrderShippedEvent;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.axonframework.commandhandling.CommandHandler;

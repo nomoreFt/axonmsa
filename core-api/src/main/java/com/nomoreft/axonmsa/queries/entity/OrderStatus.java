@@ -1,4 +1,4 @@
-package com.nomoreft.axonmsa.queries.order.entity;
+package com.nomoreft.axonmsa.queries.entity;
 
 public enum OrderStatus {
     CREATED, CONFIRMED, SHIPPED

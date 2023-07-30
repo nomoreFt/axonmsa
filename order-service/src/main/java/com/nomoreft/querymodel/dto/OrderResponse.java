@@ -1,7 +1,7 @@
 package com.nomoreft.querymodel.dto;
 
 
-import com.nomoreft.axonmsa.queries.order.entity.Order;
+import com.nomoreft.axonmsa.queries.entity.Order;
 
 public record OrderResponse (String orderId, String productId, OrderStatusResponse status) {
 

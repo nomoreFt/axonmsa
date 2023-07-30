@@ -1,13 +1,15 @@
 package com.nomoreft.querymodel;
 
-import com.nomoreft.axonmsa.events.order.OrderCreatedEvent;
-import com.nomoreft.axonmsa.events.ship.OrderShippedEvent;
-import com.nomoreft.axonmsa.queries.order.FindAllOrderedProductsQuery;
-import com.nomoreft.axonmsa.queries.order.entity.Order;
+import com.nomoreft.axonmsa.events.*;
+import com.nomoreft.axonmsa.queries.FindAllOrderedProductsQuery;
+import com.nomoreft.axonmsa.queries.OrderUpdatesQuery;
+import com.nomoreft.axonmsa.queries.TotalProductsShippedQuery;
+import com.nomoreft.axonmsa.queries.entity.Order;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
 import org.axonframework.queryhandling.QueryUpdateEmitter;
+import org.reactivestreams.Publisher;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,7 +31,27 @@ public class InMemoryOrderEventHandler implements OrderEventHandler{
     @EventHandler
     public void on(OrderCreatedEvent event) {
         String orderId = event.orderId();
-        orders.put(orderId, new Order(orderId, event.productId()));
+        orders.put(orderId, new Order(orderId));
+    }
+
+    @Override
+    public void on(ProductAddedEvent event) {
+
+    }
+
+    @Override
+    public void on(ProductCountIncrementedEvent event) {
+
+    }
+
+    @Override
+    public void on(ProductCountDecrementedEvent event) {
+
+    }
+
+    @Override
+    public void on(ProductRemovedEvent event) {
+
     }
 
     @EventHandler
@@ -39,6 +61,26 @@ public class InMemoryOrderEventHandler implements OrderEventHandler{
     @QueryHandler
     public List<Order> handle(FindAllOrderedProductsQuery query) {
         return new ArrayList<>(orders.values());
+    }
+
+    @Override
+    public Publisher<Order> handleStreaming(FindAllOrderedProductsQuery query) {
+        return null;
+    }
+
+    @Override
+    public Integer handle(TotalProductsShippedQuery query) {
+        return null;
+    }
+
+    @Override
+    public Order handle(OrderUpdatesQuery query) {
+        return null;
+    }
+
+    @Override
+    public void reset(List<Order> orderList) {
+
     }
 
 

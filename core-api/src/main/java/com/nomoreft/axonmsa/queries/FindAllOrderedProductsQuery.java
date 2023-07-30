@@ -1,4 +1,4 @@
-package com.nomoreft.axonmsa.queries.order;
+package com.nomoreft.axonmsa.queries;
 
 public record FindAllOrderedProductsQuery() {
 }
