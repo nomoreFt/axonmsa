@@ -1,10 +1,10 @@
-package com.nomoreft.querymodel;
+package com.nomoreft.querymodel.projections;
 
 import com.nomoreft.axonmsa.events.*;
 import com.nomoreft.axonmsa.queries.FindAllOrderedProductsQuery;
 import com.nomoreft.axonmsa.queries.OrderUpdatesQuery;
 import com.nomoreft.axonmsa.queries.TotalProductsShippedQuery;
-import com.nomoreft.axonmsa.queries.entity.Order;
+import com.nomoreft.commandmodel.writedomain.Order;
 import org.reactivestreams.Publisher;
 
 import java.util.List;

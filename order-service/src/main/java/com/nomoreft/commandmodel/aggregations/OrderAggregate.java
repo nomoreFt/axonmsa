@@ -1,4 +1,4 @@
-package com.nomoreft.commandmodel;
+package com.nomoreft.commandmodel.aggregations;
 
 import com.nomoreft.axonmsa.commands.CreateOrderCommand;
 import com.nomoreft.axonmsa.commands.ShipOrderCommand;
@@ -23,7 +23,7 @@ public class OrderAggregate {
 
     @CommandHandler
     public OrderAggregate(CreateOrderCommand command) {
-        apply(new OrderCreatedEvent(command.orderId(), command.productId()));
+        apply(new OrderCreatedEvent(command.orderId()));
     }
 
     @EventSourcingHandler

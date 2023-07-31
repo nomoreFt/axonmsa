@@ -1,10 +1,10 @@
-package com.nomoreft.querymodel;
+package com.nomoreft.querymodel.projections;
 
 import com.nomoreft.axonmsa.events.*;
 import com.nomoreft.axonmsa.queries.FindAllOrderedProductsQuery;
 import com.nomoreft.axonmsa.queries.OrderUpdatesQuery;
 import com.nomoreft.axonmsa.queries.TotalProductsShippedQuery;
-import com.nomoreft.axonmsa.queries.entity.Order;
+import com.nomoreft.commandmodel.writedomain.Order;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
@@ -36,7 +36,11 @@ public class InMemoryOrderEventHandler implements OrderEventHandler{
 
     @Override
     public void on(ProductAddedEvent event) {
-
+        orders.computeIfPresent(event.orderId(), (orderId, order) -> {
+            order.addProduct(event.productId());
+           emitUpdate(order);
+            return order;
+        });
     }
 
     @Override
@@ -84,18 +88,18 @@ public class InMemoryOrderEventHandler implements OrderEventHandler{
     }
 
 
-    /*@EventHandler
+    @EventHandler
     public void on(OrderShippedEvent event) {
         orders.computeIfPresent(event.orderId(), (orderId, order) -> {
             order.setOrderShipped();
-            emitter.emitUpdate(order);
+            emitUpdate(order);
             return order;
         });
     }
 
     private void emitUpdate(Order order) {
         emitter.emit(OrderUpdatesQuery.class, q -> order.getOrderId()
-                .equals(q.getOrderId()), order);
-    }*/
+                .equals(q.orderId()), order);
+    }
 
 }

@@ -1,6 +1,6 @@
-package com.nomoreft.querymodel.dto;
+package com.nomoreft.querymodel.readdomain;
 
-import com.nomoreft.axonmsa.queries.entity.OrderStatus;
+import com.nomoreft.commandmodel.writedomain.OrderStatus;
 
 public enum OrderStatusResponse {
     CREATED, CONFIRMED, SHIPPED, UNKNOWN;

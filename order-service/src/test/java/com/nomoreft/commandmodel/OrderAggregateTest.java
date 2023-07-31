@@ -4,6 +4,7 @@ import com.nomoreft.axonmsa.commands.CreateOrderCommand;
 import com.nomoreft.axonmsa.commands.ShipOrderCommand;
 import com.nomoreft.axonmsa.events.OrderCreatedEvent;
 import com.nomoreft.axonmsa.events.OrderShippedEvent;
+import com.nomoreft.commandmodel.aggregations.OrderAggregate;
 import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.axonframework.test.aggregate.FixtureConfiguration;
 import org.junit.jupiter.api.BeforeEach;
