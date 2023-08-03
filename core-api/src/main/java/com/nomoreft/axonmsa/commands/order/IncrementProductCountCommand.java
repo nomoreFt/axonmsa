@@ -1,4 +1,4 @@
-package com.nomoreft.axonmsa.commands;
+package com.nomoreft.axonmsa.commands.order;
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 

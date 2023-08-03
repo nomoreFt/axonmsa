@@ -1,6 +1,6 @@
 package com.nomoreft.controller;
 
-import com.nomoreft.axonmsa.commands.*;
+import com.nomoreft.axonmsa.commands.order.*;
 import com.nomoreft.querymodel.readdomain.OrderResponse;
 import com.nomoreft.service.OrderQueryService;
 import org.axonframework.commandhandling.gateway.CommandGateway;

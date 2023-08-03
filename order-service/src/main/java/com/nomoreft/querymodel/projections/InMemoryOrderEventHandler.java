@@ -88,14 +88,14 @@ public class InMemoryOrderEventHandler implements OrderEventHandler{
     }
 
 
-    @EventHandler
+/*    @EventHandler
     public void on(OrderShippedEvent event) {
         orders.computeIfPresent(event.orderId(), (orderId, order) -> {
             order.setOrderShipped();
             emitUpdate(order);
             return order;
         });
-    }
+    }*/
 
     private void emitUpdate(Order order) {
         emitter.emit(OrderUpdatesQuery.class, q -> order.getOrderId()

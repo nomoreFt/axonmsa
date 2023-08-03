@@ -4,4 +4,5 @@ include 'order-service'
 include 'ship-service'
 include 'payment-service'
 include 'core-api'
+include 'product-service'
 

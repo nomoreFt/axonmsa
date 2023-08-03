@@ -1,0 +1,14 @@
+### Add Products
+
+POST http://localhost:8080/products
+Content-Type: application/json
+
+{
+  "name": "Apple4",
+  "price": 10,
+  "quantity": 2
+}
+
+### Get All Products
+
+GET http://localhost:8080/products/all
