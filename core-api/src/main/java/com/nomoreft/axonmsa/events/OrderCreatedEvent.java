@@ -1,4 +1,11 @@
 package com.nomoreft.axonmsa.events;
 
-public record OrderCreatedEvent(String orderId) {
+import lombok.Builder;
+
+@Builder
+public record OrderCreatedEvent(String orderId,String productId,
+        String userId,
+        String addressId,
+        Integer quantity,
+        OrderStatus orderStatus) {
 }

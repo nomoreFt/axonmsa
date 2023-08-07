@@ -1,5 +1,29 @@
+
+
 axon:
   serializer:
     general: jackson
     events: jackson
     messages: jackson
+server:
+  port: 9091
+
+
+spring:
+  h2:
+    console:
+      enabled: true
+      settings.trace: false
+      settings.web-allow-others: false
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:tcp://localhost:9999/mem:testdb;DB_CLOSE_DELAY=-1
+      username: sa
+      password:
